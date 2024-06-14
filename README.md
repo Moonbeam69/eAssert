@@ -1,3 +1,3 @@
 ### eAssert
 
-Description coming soon
+eAssert is a custom assertion library for JDK.   
