@@ -1,3 +1,5 @@
 ### eAssert
 
-eAssert is a custom assertion library for JDK.   
+eAssert is a light-weight fully-transparent assertion library for JDK. It is not based on AssertJ or Truth.
+
+TBH I wondered about the complexity of open source asserion libtaries and decided to build my own. 

@@ -184,9 +184,9 @@ public class Assertions<T> {
   }
 
   public void contains(Boolean b, String message) {
-    java.util.Iterator itr = stringlist.iterator();
+    java.util.Iterator itr = booleanlist.iterator();
     while(itr.hasNext()) {
-      if (itr.next().equals(str)) {
+      if (itr.next()==b) {
         return;
       }
     }

@@ -20,13 +20,22 @@ public class testclass {
   // STRING TEST CASES
 
   @Test
-  public void TestStringStartsNoMessage() {
+  public void TestStringStartsNoMessagePos() {
     assertThat(string1).startsWith(string1startswith);
   }
-
   @Test
-  public void TestStringStartsWithMessage() {
+  public void TestStringStartsWithMessagePos() {
     assertThat(string1).startsWith(string1startswith, "Assert that 'Hello' starts with 'Hel'");
+  }
+  @Test
+  public void TestStringStartsNoMessageNeg() {
+    System.out.println("Expected to fail:");
+    assertThat(string1).startsWith(Character.toString((char)string1.charAt(0)+1));
+  }
+  @Test
+  public void TestStringStartsWithMessageNeg() {
+    System.out.println("Expected to fail:");
+    assertThat(string1).startsWith(Character.toString((char)string1.charAt(0)+1), "Assert that "+ string1 + " starts with " + Character.toString((char)string1.charAt(0)+1));
   }
 
   @Test
