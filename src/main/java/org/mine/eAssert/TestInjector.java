@@ -1,8 +1,8 @@
-package org.mine;
+package org.mine.eAssert;
 
 import java.util.ArrayList;
 
-public abstract class TestInjector {
+public abstract class TestInjector<T> {
 
   public static Assertions assertThat(String str) {
     return new Assertions(str);
@@ -15,5 +15,8 @@ public abstract class TestInjector {
   }
   public static Assertions assertThat(ArrayList<?> list) {
     return new Assertions(list);
+  }
+  public static <T> Assertions assertThat(T[] array) {
+    return new <T> Assertions(array);
   }
 }
