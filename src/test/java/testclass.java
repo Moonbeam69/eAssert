@@ -13,8 +13,8 @@ public class testclass {
   final Integer posint                       = 1;
   final Integer negint                       = -1;
   final Integer zero                         = 0;
-  final Boolean trubool                      = true;
-  final Boolean falbool                      = false;
+  final boolean trubool                      = true;
+  final boolean falbool                      = false;
   final ArrayList<String> stringlist         = new ArrayList<>(java.util.Arrays.asList(str1, "string2", "string3"));
   final ArrayList<Integer> integerlist       = new ArrayList<>(java.util.Arrays.asList(posint,3,7));
   final ArrayList<Boolean> booleanlist       = new ArrayList<>(java.util.Arrays.asList(trubool, falbool, trubool));
@@ -95,7 +95,7 @@ public class testclass {
   // BOOLEAN TEST CASES
   @Test
   public void TestBooleanIsTrueNoMessage() {
-    assertThat(trubool).isPositive();
+    assertThat(trubool).isTrue();
   }
 
   @Test
@@ -210,4 +210,15 @@ public class testclass {
     String message = "Assert " + java.util.Arrays.toString(booleanArray) + " contains an instance of " + String.valueOf(trubool);
     assertThat(booleanArray).containsItem(trubool,message);
   }
+
+  // CLASS Test Classes
+//  @Test
+//  public void TestIsInstanceOfClass() {
+//    Foo o = new Foo();
+//
+//    assertThat(o).IsInstanceOfClass(Foo.class);
+//  }
+//
+//  private class Foo {
+//  }
 }

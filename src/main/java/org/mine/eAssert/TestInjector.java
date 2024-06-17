@@ -1,22 +1,25 @@
 package org.mine.eAssert;
 
-import java.util.ArrayList;
-
 public abstract class TestInjector<T> {
 
-  public static Assertions assertThat(String str) {
-    return new Assertions(str);
+  public static org.mine.eAssert.api.StringAssertions assertThat(String str) {
+    return new org.mine.eAssert.api.StringAssertions(str);
   }
-  public static Assertions assertThat(int i) {
-    return new Assertions(i);
+
+  public static org.mine.eAssert.api.IntegerAssertions assertThat(int integer) {
+    return new org.mine.eAssert.api.IntegerAssertions(integer);
   }
-  public static Assertions assertThat(Boolean b) {
-    return new Assertions(b);
+
+  public static org.mine.eAssert.api.BooleanAssertions assertThat(Boolean bool) {
+    return new org.mine.eAssert.api.BooleanAssertions(bool);
   }
-  public static Assertions assertThat(ArrayList<?> list) {
-    return new Assertions(list);
+
+  public static org.mine.eAssert.api.ArrayListAssertions assertThat(java.util.ArrayList<?> list) {
+    return new org.mine.eAssert.api.ArrayListAssertions(list);
   }
-  public static <T> Assertions assertThat(T[] array) {
-    return new <T> Assertions(array);
+
+  public static <T> org.mine.eAssert.api.ArrayAssertions assertThat(T[] array) {
+    return new <T>org.mine.eAssert.api.ArrayAssertions(array);
   }
+
 }
