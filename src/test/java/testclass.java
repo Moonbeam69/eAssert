@@ -4,10 +4,11 @@ import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 
-import static org.mine.eAssert.TestInjector.assertThat;
+import static org.mine.eAssert.AssertionInjector.assertThat;
+
 
 public class testclass {
-  final String str1                          = "hello world";
+  final static String str1                          = "hello world";
   final String string1startswith             = "hel";
   final String string1endswith               = "rld";
   final Integer posint                       = 1;
@@ -30,6 +31,7 @@ public class testclass {
   @Test
   public void TestStringStartsNoMessagePos() {
     assertThat(str1).startsWith(string1startswith);
+
   }
   @Test
   public void TestStringStartsWithMessagePos() {
@@ -60,6 +62,13 @@ public class testclass {
     assertThat(str1).startsWithIgnoringCase(string1startswith, "Assert that 'Hello' starts with 'Hel'");
   }
 
+//  @Test
+//  public void TestStringMethodsWithFluency() {
+//    assertThat(str1)
+//            .startsWith("h")
+//            .startsWithIgnoringCase("H")
+//            .isNotEmpty();
+//  }
   // INT TEST CASES
 
   @Test

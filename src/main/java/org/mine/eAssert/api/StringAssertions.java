@@ -1,14 +1,20 @@
 package org.mine.eAssert.api;
 
-public class StringAssertions<T> {
+public class StringAssertions {
+
   private String str                                   = "";
   private final org.apache.logging.log4j.Logger logger = org.apache.logging.log4j.LogManager.getLogger(org.mine.eAssert.api.StringAssertions.class);
 
   //
   // Strings
   //
+
   public StringAssertions(String str) {
     this.str = str;
+  }
+
+  public void assertThat(String str) {
+    this.str=str;
   }
 
   // methods
@@ -47,5 +53,4 @@ public class StringAssertions<T> {
       throw new AssertionError(message);
     }
   }
-
 }

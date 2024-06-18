@@ -1,6 +1,6 @@
 package org.mine.eAssert;
 
-public abstract class TestInjector<T> {
+public abstract class AssertionInjector<T> {
 
   public static org.mine.eAssert.api.StringAssertions assertThat(String str) {
     return new org.mine.eAssert.api.StringAssertions(str);
