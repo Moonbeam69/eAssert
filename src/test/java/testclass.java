@@ -2,37 +2,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.*;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 
-import static org.mine.eAssert.AssertionInjector.assertThat;
+import static org.mine.eAssert.Assertions.assertThat;
 
+public class testclass extends org.mine.eAssert.PositiveTestdata {
 
-public class testclass {
-  final static String str1                          = "hello world";
-  final String string1startswith             = "hel";
-  final String string1endswith               = "rld";
-  final Integer posint                       = 1;
-  final Integer negint                       = -1;
-  final Integer zero                         = 0;
-  final boolean trubool                      = true;
-  final boolean falbool                      = false;
-  final ArrayList<String> stringlist         = new ArrayList<>(java.util.Arrays.asList(str1, "string2", "string3"));
-  final ArrayList<Integer> integerlist       = new ArrayList<>(java.util.Arrays.asList(posint,3,7));
-  final ArrayList<Boolean> booleanlist       = new ArrayList<>(java.util.Arrays.asList(trubool, falbool, trubool));
-  final String[] stringArrayUniqueItems      = {str1, "string2", "string3"};
-  final String[] stringArrayNonUniqueItems   = {str1, str1, "string2", "string3"};
-  final Integer[] integerArrayUniqueItems    = {posint, 4, 7};
-  final Integer[] integerArrayNonUniqueItems = {posint, posint, 7};
-  final Boolean[] booleanArray               = {trubool, falbool, trubool};
-  private final Logger logger                = LogManager.getLogger(testclass.class);
+  private final Logger logger                     = LogManager.getLogger(testclass.class);
   private final String expectedAssertionException = "Assertion exception is expected";
 
-  // STRING TEST CASES
-  @Test
-  public void TestStringStartsNoMessagePos() {
-    assertThat(str1).startsWith(string1startswith);
-
-  }
   @Test
   public void TestStringStartsWithMessagePos() {
     assertThat(str1).startsWith(string1startswith, "Assert that " + str1 + " starts with " + str1.substring(0,3));
@@ -46,31 +24,35 @@ public class testclass {
   public void TestStringIsNotEmptyNoMessage() {
     assertThat(str1).isNotEmpty();
   }
-
   @Test
   public void TestStringIsNotEmptyWithMessage() {
     assertThat(str1).isNotEmpty("Assert that Hello is not empty");
   }
-
   @Test
   public void TestStringStartsNoMessageIgnoringCase() {
     assertThat(str1).startsWithIgnoringCase(string1startswith);
   }
-
   @Test
   public void TestStringStartsWithMessageIgnoringCase() {
     assertThat(str1).startsWithIgnoringCase(string1startswith, "Assert that 'Hello' starts with 'Hel'");
   }
+  @Test
+  public void TestStringMethodsWithFluencyNoMessage() {
+    assertThat(str1)
+            .startsWith("h")
+            .startsWithIgnoringCase("H")
+            .isNotEmpty();
+  }
 
-//  @Test
-//  public void TestStringMethodsWithFluency() {
-//    assertThat(str1)
-//            .startsWith("h")
-//            .startsWithIgnoringCase("H")
-//            .isNotEmpty();
-//  }
+  @Test
+  public void TestStringMethodsWithFluencyWithMessage() {
+    assertThat(str1)
+            .startsWith("h", "Asserts starts with h")
+            .startsWithIgnoringCase("HE", "Asserts starts with HE ignore case")
+            .isNotEmpty();
+  }
+
   // INT TEST CASES
-
   @Test
   public void TestIntNotZeroNoMessage() {
     assertThat(posint).isNotZero();
@@ -101,6 +83,13 @@ public class testclass {
     assertThat(negint).isNegative("Assert that " + negint + " is negative");
   }
 
+  @Test
+  public void TestBooleanFluencyNoMessage() {
+    assertThat(posint)
+            .isPositive()
+            .isNotZero();
+  }
+
   // BOOLEAN TEST CASES
   @Test
   public void TestBooleanIsTrueNoMessage() {
@@ -109,17 +98,17 @@ public class testclass {
 
   @Test
   public void TestBooleanIsFalseWithMessage() {
-    assertThat(posint).isPositive();
+    assertThat(falbool).isFalse();
   }
 
   @Test
   public void TestBooleanIsFalseNoMessage() {
-    assertThat(posint).isPositive();
+    assertThat(falbool).isFalse();
   }
 
   @Test
   public void TestBooleanIsTrueWithMessage() {
-    assertThat(posint).isPositive();
+    assertThat(trubool).isTrue("Assert true is true");
   }
 
   // ARRAYLIST TEST CASES
@@ -220,14 +209,15 @@ public class testclass {
     assertThat(booleanArray).containsItem(trubool,message);
   }
 
-  // CLASS Test Classes
-//  @Test
-//  public void TestIsInstanceOfClass() {
-//    Foo o = new Foo();
-//
-//    assertThat(o).IsInstanceOfClass(Foo.class);
-//  }
-//
-//  private class Foo {
-//  }
+  @Test
+  public void TestDateIsBeforeNoMessage() {
+    LocalDateTime today = LocalDateTime.now();
+    assertThat(today).isAfter(past);
+  }
+  @Test
+  public void TestDateIsBeforeNoMessageNeg() {
+    logger.error(expectedAssertionException);
+    LocalDateTime today = LocalDateTime.now();
+    assertThat(past).isAfter(today);
+  }
 }
