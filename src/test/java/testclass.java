@@ -3,10 +3,11 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.*;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
-import static org.mine.eAssert.Assertions.assertThat;
+import static org.mine.eAssert.api.Assertions.assertThat;
 
-public class testclass extends org.mine.eAssert.PositiveTestdata {
+public class testclass extends PositiveTestdata {
 
   private final Logger logger                     = LogManager.getLogger(testclass.class);
   private final String expectedAssertionException = "Assertion exception is expected";
@@ -52,11 +53,14 @@ public class testclass extends org.mine.eAssert.PositiveTestdata {
             .isNotEmpty();
   }
 
-  // INT TEST CASES
+  // INTEGER TEST CASES
   @Test
   public void TestIntNotZeroNoMessage() {
     assertThat(posint).isNotZero();
+    int i = 1;
+    assertThat(i).isNotZero(); // ints are autoboxed to Integers
   }
+
 
   @Test
   public void TestIntNotZeroWithMessage() {
@@ -209,15 +213,40 @@ public class testclass extends org.mine.eAssert.PositiveTestdata {
     assertThat(booleanArray).containsItem(trubool,message);
   }
 
+  //
+  // Date
+  //
   @Test
-  public void TestDateIsBeforeNoMessage() {
+  public void TestLocalDateTimeIsAfterNoMessage() {
     LocalDateTime today = LocalDateTime.now();
+
     assertThat(today).isAfter(past);
   }
   @Test
-  public void TestDateIsBeforeNoMessageNeg() {
+  public void TestLocalDateTimeIsAfterNoMessageNeg() {
     logger.error(expectedAssertionException);
     LocalDateTime today = LocalDateTime.now();
+
     assertThat(past).isAfter(today);
   }
+  @Test
+  public void TestJavaUtilDateIsAfterNoMessage() {
+    Date today = new Date();
+    java.util.Calendar calendar = java.util.Calendar.getInstance();
+    calendar.set(2023, java.util.Calendar.JUNE, 17, 12, 0, 0);
+    Date past = calendar.getTime();
+
+    assertThat(today).isAfter(past);
+  }
+
+  @Test
+  public void TestZonedDateTimeIsAfterNoMessage() {
+    LocalDateTime today = LocalDateTime.now();
+    java.time.ZonedDateTime zonedtoday = java.time.ZonedDateTime.of(today, java.time.ZoneId.of("UTC"));
+    LocalDateTime past = LocalDateTime.of(2023, 6, 17, 12, 0);
+    java.time.ZonedDateTime zonedpast = java.time.ZonedDateTime.of(past, java.time.ZoneId.of("UTC"));
+
+    assertThat(zonedtoday).isAfter(zonedpast);
+  }
+
 }

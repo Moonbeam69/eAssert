@@ -8,7 +8,6 @@ public class ArrayAssertions<T> {
   private java.util.ArrayList<Boolean> booleanlist   = null;
   private Boolean b                        = true;
   private T[] array                        = null;
-  private final org.apache.logging.log4j.Logger logger              = org.apache.logging.log4j.LogManager.getLogger(org.mine.eAssert.api.ArrayAssertions.class);
   private String[] stringarray             = null;
   private Integer[] integerarray           = null;
   private Boolean[] booleanarray           = null;
@@ -21,8 +20,7 @@ public class ArrayAssertions<T> {
     this.array = array;
 
     if (array.length==0) {
-      logger.error("empty array");
-      return;
+      throw new AssertionError("empty array");
     }
 
     Object firstElement = array[0];

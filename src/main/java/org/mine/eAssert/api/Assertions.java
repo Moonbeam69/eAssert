@@ -1,4 +1,4 @@
-package org.mine.eAssert;
+package org.mine.eAssert.api;
 
 public abstract class Assertions<T> {
 
@@ -15,6 +15,12 @@ public abstract class Assertions<T> {
     return new org.mine.eAssert.api.ArrayListAssertions(list);
   }
   public static org.mine.eAssert.api.DateAssertions assertThat(java.time.LocalDateTime date_) {
+    return new org.mine.eAssert.api.DateAssertions(date_);
+  }
+  public static org.mine.eAssert.api.DateAssertions assertThat(java.util.Date date_) {
+    return new org.mine.eAssert.api.DateAssertions(date_);
+  }
+  public static org.mine.eAssert.api.DateAssertions assertThat(java.time.ZonedDateTime date_) {
     return new org.mine.eAssert.api.DateAssertions(date_);
   }
   public static <T> org.mine.eAssert.api.ArrayAssertions assertThat(T[] array) {

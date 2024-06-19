@@ -1,5 +1,3 @@
-package org.mine.eAssert;
-
 import java.time.LocalDateTime;
 
 public class PositiveTestdata {

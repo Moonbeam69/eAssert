@@ -3,7 +3,6 @@ package org.mine.eAssert.api;
 public class StringAssertion {
 
   private static String str                                   = "";
-  private final org.apache.logging.log4j.Logger logger = org.apache.logging.log4j.LogManager.getLogger(org.mine.eAssert.api.StringAssertion.class);
 
   public StringAssertion(String str) {
       this.str = str;
