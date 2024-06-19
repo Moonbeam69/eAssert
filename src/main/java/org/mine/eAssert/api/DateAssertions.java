@@ -9,14 +9,12 @@ public class DateAssertions {
   public DateAssertions(java.time.LocalDateTime date_) {
       this.localdatetime_now = date_;
   }
-
   public DateAssertions(java.util.Date date_) {
     this.date_now = date_;
   }
   public DateAssertions(java.time.ZonedDateTime date_) {
     this.zoneddatetime_now = date_;
   }
-
 
   // methods
   public org.mine.eAssert.api.DateAssertions isAfter ( java.time.LocalDateTime afterdate) {
